@@ -13,6 +13,9 @@ function fixName(name) {
     if (name.search("L.A. Lakers" !== -1)) {
         name = name.replace("L.A. Lakers", "LA Lakers")
     }
+    if (name.search("L.A. Clippers" !== -1)) {
+        name = name.replace("L.A. Clippers", "LA Clippers")
+    }
 
     return name
 }
