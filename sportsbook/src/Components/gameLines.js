@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectedLines from './projectedLines';
 import MidpointLines from './midpointLines';
 import Midpoint1stHalfLines from './midpoint1stHalfLines';
+import Last10Lines from './last10Lines';
 
 const GameLines = () => {
     let data = require('../odds.json')
@@ -23,6 +24,10 @@ const GameLines = () => {
                             <p className='row'>Total</p>
                         </div>
                         <ProjectedLines
+                            away = {game.teams.away}
+                            home = {game.teams.home}
+                        />
+                        <Last10Lines
                             away = {game.teams.away}
                             home = {game.teams.home}
                         />
