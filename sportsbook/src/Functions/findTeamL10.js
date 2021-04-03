@@ -2,7 +2,6 @@ export function findTeamL10(name) {
     let stats = require('../last10.json')
     let adjName = fixNameL10(name)
     let teamStats = stats[adjName]
-    console.log(teamStats)
 
     return teamStats
 }
