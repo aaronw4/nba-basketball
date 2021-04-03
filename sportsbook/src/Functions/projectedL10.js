@@ -19,7 +19,7 @@ export function projectedL10(stats, seasonStats) {
     let adjStats = {
         points_scored: Number(OffenseAve),
         points_against: Number(DefenseAve),
-        possessions: seasonStats.possessions
+        possessions: Number(seasonStats.possessions)
     }
 
     return (adjStats)
