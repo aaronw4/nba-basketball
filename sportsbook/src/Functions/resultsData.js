@@ -20,8 +20,8 @@ export function resultsData() {
         gameResults.spreadAwayOdds = results[i].odds1
         gameResults.spreadHomeOdds = results[i].odds2
         gameResults.total = results[i].total
-        gameResults.openingSpreadHome = results[i].openingSpread1
-        gameResults.openingSpreadAway = results[i].openingSpread2
+        gameResults.openingSpreadAway = results[i].openingSpread1
+        gameResults.openingSpreadHome = results[i].openingSpread2
         gameResults.openingTotal = results[i].openingTotal
 
         let awayStats = findTeam(results[i].team1);
