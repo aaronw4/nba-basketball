@@ -19,18 +19,18 @@ export function pickSpread(projecteAwayLine, actualAwayLine) {
     return [pick, condition]
 }
 
-export function pickTotal(projecteTotal, actualTotal) {
+export function pickTotal(projecteTotal, lineTotal) {
     let pick
 
     if (projecteTotal === '') {
         pick = 'No bet'
-    } else if (Number(actualTotal) - Number(projecteTotal) >= 4) {
+    } else if (Number(lineTotal) - Number(projecteTotal) >= 4) {
         pick = 'Under'
-    } else if (-1 * Number(actualTotal) - Number(projecteTotal) >= 4) {
+    } else if (Number(lineTotal) - Number(projecteTotal) <= -4) {
         pick = 'Over'
     } else {
         pick = 'No bet'
     }
-
+    
     return pick
 }
