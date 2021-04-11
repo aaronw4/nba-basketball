@@ -39,6 +39,8 @@ export function resultsData() {
         gameResults.projectedSpreadAwayL10 = projectedStatsL10[0].spreadAway;
         gameResults.projectedSpreadHomeL10 = projectedStatsL10[0].spreadHome;
         gameResults.projectedTotalL10 = projectedStatsL10[0].total;
+
+
         let spreadMP = MidPoint(results[i].odds1, results[i].odds2);
         gameResults.midpointSpread = spreadMP
 
@@ -46,15 +48,19 @@ export function resultsData() {
         let projTotalPick = pickTotal(projectedStats[0].total, results[i].total)
         let projL10SpreadPick = pickSpread(projectedStatsL10[0].spreadAway, results[i].spread1)
         let projL10STotalPick = pickTotal(projectedStatsL10[0].total, results[i].total)
+        let mpSpreadPick = pickSpread(results[i].openingSpread1, results[i].spread1)
+        let mpTotalPick = pickTotal(results[i].openingTotal, results[i].total)
         gameResults.projSpreadPick = projSpreadPick[0]
         gameResults.projSpreadPickSpread = projSpreadPick[1]
         gameResults.projTotalPick = projTotalPick
         gameResults.projL10SpreadPick = projL10SpreadPick[0]
         gameResults.projL10SpreadPickSpread = projL10SpreadPick[1]
-        gameResults.projL10STotalPick = projL10STotalPick
-
+        gameResults.projL10TotalPick = projL10STotalPick
+        gameResults.mpSpreadPick = mpSpreadPick[0]
+        gameResults.mpSpreadPickSpread = mpSpreadPick[1]
+        gameResults.mpTotalPick = mpTotalPick
         data.push(gameResults)
     }
-
+    
     return data
 }
