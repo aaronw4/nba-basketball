@@ -7,10 +7,10 @@ export function pickSpread(projecteAwayLine, actualAwayLine) {
         condition = ''
     } else if (Number(actualAwayLine) - Number(projecteAwayLine) >= 4) {
         pick = 'Away'
-        condition = Number(projecteAwayLine)
-    } else if (-1 * Number(actualAwayLine) - Number(projecteAwayLine) >= 4) {
+        condition = Number(actualAwayLine)
+    } else if (Number(actualAwayLine) - Number(projecteAwayLine) <= -4) {
         pick = 'Home'
-        condition = -1 * Number(projecteAwayLine)
+        condition = -1 * Number(actualAwayLine)
     } else {
         pick = 'No bet'
         condition = ''
