@@ -5,13 +5,13 @@ import {resultsData} from '../Functions/resultsData';
 import ResultsCount from './resultsCount';
 
 const Results = () => {
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     let results = resultsData();
-    //     setData(results)
-    // },[])
-    let data = require('../tempData.json')
+    useEffect(() => {
+        let results = resultsData();
+        setData(results)
+    },[])
+    // let data = require('../tempData.json')
     console.log(data)
     return(
         <div>
@@ -44,10 +44,12 @@ const Results = () => {
                         <p>{game.total}</p>
                     </div>
                     <div className='fgMidpoint'>
-                        <h5>Opening Lines</h5>
+                        <h5>Opening Lines (MP)</h5>
                         <p>{game.openingSpreadAway}</p>
                         <p>{game.openingSpreadHome}</p>
                         <p>{game.openingTotal}</p>
+                        <p>{game.mpSpreadPick}: {WinOrLoseSpread(game.scoreAway, game.scoreHome, game.mpSpreadPick, game.mpSpreadPickSpread)}</p>
+                        <p>{game.mpTotalPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.mpTotalPick, game.total)}</p>
                     </div>
                     <div className='fgMidpoint'>
                         <h5>Projected Lines</h5>
@@ -63,7 +65,7 @@ const Results = () => {
                         <p>{game.projectedSpreadHomeL10}</p>
                         <p>{game.projectedTotalL10}</p>
                         <p>{game.projL10SpreadPick}: {WinOrLoseSpread(game.scoreAway, game.scoreHome, game.projL10SpreadPick, game.projL10SpreadPickSpread)}</p>
-                        <p>{game.projL10STotalPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.projL10TotalPick, game.total)}</p>
+                        <p>{game.projL10TotalPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.projL10TotalPick, game.total)}</p>
                     </div>
                 </div>
             ))}
