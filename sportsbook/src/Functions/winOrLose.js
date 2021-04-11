@@ -1,4 +1,4 @@
-export function WinOrLoseSpread(awayScore, homeScore, pick, pickSpread) {
+export function WinOrLoseSpread(awayScore, homeScore, pick, teamSpread) {
     let gameResult
     let result
 
@@ -10,9 +10,9 @@ export function WinOrLoseSpread(awayScore, homeScore, pick, pickSpread) {
     
     if (pick === 'No bet') {
         result = ''
-    } else if (Number(pickSpread) - Number(gameResult) > 0) {
+    } else if (Number(teamSpread) -gameResult > 0) {
         result = 'Win'
-    } else if (Number(pickSpread) - Number(gameResult) < 0) {
+    } else if (Number(teamSpread) - gameResult < 0) {
         result = 'Lose'
     } else {
         result = 'Push'
@@ -44,6 +44,6 @@ export function WinOrLoseTotal(awayScore, homeScore, pick, total) {
             result = 'Push'
         }
     }
-
+    
     return result
 }
