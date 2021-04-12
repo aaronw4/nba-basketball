@@ -52,12 +52,20 @@ const Results = () => {
                         <p>{game.mpTotalPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.mpTotalPick, game.total)}</p>
                     </div>
                     <div className='fgMidpoint'>
-                        <h5>Projected Lines</h5>
+                        <h5>Projected Lines (C)</h5>
                         <p>{game.projectedSpreadAway}</p>
                         <p>{game.projectedSpreadHome}</p>
                         <p>{game.projectedTotal}</p>
                         <p>{game.projSpreadPick}: {WinOrLoseSpread(game.scoreAway, game.scoreHome, game.projSpreadPick, game.projSpreadPickSpread)}</p>
                         <p>{game.projTotalPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.projTotalPick, game.total)}</p>
+                    </div>
+                    <div className='fgMidpoint'>
+                        <h5>Projected Lines (O)</h5>
+                        <p>{game.projectedSpreadAway}</p>
+                        <p>{game.projectedSpreadHome}</p>
+                        <p>{game.projectedTotal}</p>
+                        <p>{game.projSpreadOpenPick}: {WinOrLoseSpread(game.scoreAway, game.scoreHome, game.projSpreadOpenPick, game.projSpreadOpenPickSpread)}</p>
+                        <p>{game.projTotalOpenPick}: {WinOrLoseTotal(game.scoreAway, game.scoreHome, game.projTotalOpenPick, game.openingTotal)}</p>
                     </div>
                     <div className='fgMidpoint'>
                         <h5>Projected L10 Lines</h5>
