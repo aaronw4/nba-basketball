@@ -46,6 +46,8 @@ export function resultsData() {
 
         let projSpreadPick = pickSpread(projectedStats[0].spreadAway, results[i].spread1)
         let projTotalPick = pickTotal(projectedStats[0].total, results[i].total)
+        let projSpreadOpenPick = pickSpread(projectedStats[0].spreadAway, results[i].openingSpread1)
+        let projTotalOpenPick = pickTotal(projectedStats[0].total, results[i].openingTotal)
         let projL10SpreadPick = pickSpread(projectedStatsL10[0].spreadAway, results[i].spread1)
         let projL10STotalPick = pickTotal(projectedStatsL10[0].total, results[i].total)
         let mpSpreadPick = pickSpread(results[i].openingSpread1, results[i].spread1)
@@ -53,6 +55,9 @@ export function resultsData() {
         gameResults.projSpreadPick = projSpreadPick[0]
         gameResults.projSpreadPickSpread = projSpreadPick[1]
         gameResults.projTotalPick = projTotalPick
+        gameResults.projSpreadOpenPick = projSpreadOpenPick[0]
+        gameResults.projSpreadOpenPickSpread = projSpreadOpenPick[1]
+        gameResults.projTotalOpenPick = projTotalOpenPick
         gameResults.projL10SpreadPick = projL10SpreadPick[0]
         gameResults.projL10SpreadPickSpread = projL10SpreadPick[1]
         gameResults.projL10TotalPick = projL10STotalPick
