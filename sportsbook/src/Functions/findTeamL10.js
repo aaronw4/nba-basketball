@@ -3,7 +3,11 @@ export function findTeamL10(name) {
     let adjName = fixNameL10(name)
     let teamStats = stats[adjName]
 
-    return teamStats
+    if (teamStats === undefined) {
+        return []
+    } else {
+        return teamStats
+    }
 }
 
 function fixNameL10(name) {
