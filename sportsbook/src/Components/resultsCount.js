@@ -9,6 +9,10 @@ const ResultsCount = (props) => {
     let projSpreadTotal = 0
     let projTotalCount = 0
     let projTotalTotal = 0
+    let projSpreadOpenCount = 0
+    let projSpreadOpenTotal = 0
+    let projTotalOpenCount = 0
+    let projTotalOpenTotal = 0
     let projL10SpreadCount = 0
     let projL10SpreadTotal = 0
     let projL10TotalCount = 0
@@ -33,7 +37,14 @@ const ResultsCount = (props) => {
     let pNotL10SpreadTotal = 0
     let pNotL10TotalCount = 0
     let pNotL10TotalTotal = 0
-    
+    let pNotMPSpreadCount = 0
+    let pNotMPSpreadTotal = 0
+    let pNotMPTotalCount = 0
+    let pNotMPTotalTotal = 0
+    let l10NotMpSpreadCount = 0
+    let l10NotMpSpreadTotal = 0
+    let l10NotMpTotalCount = 0
+    let l10NotMpTotalTotal = 0
 
     for (let i=0; i < data.length; i++) {
         let projSpreadResult = WinOrLoseSpread(data[i].scoreAway, data[i].scoreHome, data[i].projSpreadPick, data[i].projSpreadPickSpread)
@@ -54,6 +65,23 @@ const ResultsCount = (props) => {
             projTotalTotal++
         }
 
+        let projSpreadOpenResult = WinOrLoseSpread(data[i].scoreAway, data[i].scoreHome, data[i].projSpreadOpenPick, data[i].projSpreadOpenPickSpread)
+        
+        if (projSpreadOpenResult === 'Win') {
+            projSpreadOpenCount++
+            projSpreadOpenTotal++
+        } else if (projSpreadOpenResult === 'Lose') {
+            projSpreadOpenTotal++
+        }
+
+        let projTotalOpenResult = WinOrLoseTotal(data[i].scoreAway, data[i].scoreHome, data[i].projTotalOpenPick, data[i].openingTotal)
+        
+        if (projTotalOpenResult === 'Win') {
+            projTotalOpenCount++
+            projTotalOpenTotal++
+        } else if (projTotalOpenResult === 'Lose') {
+            projTotalOpenTotal++
+        }
         let projSpreadL10Result = WinOrLoseSpread(data[i].scoreAway, data[i].scoreHome, data[i].projL10SpreadPick, data[i].projL10SpreadPickSpread)
 
         if (projSpreadL10Result === 'Win') {
@@ -145,32 +173,65 @@ const ResultsCount = (props) => {
         } else if (projTotalResult === 'Lose' && projTotalL10Result === 'Win') {
             pNotL10TotalTotal++
         }
+        
+        if (projSpreadResult === 'Win' && mpSpreadResult === 'Lose') {
+            pNotMPSpreadCount++
+            pNotMPSpreadTotal++
+        } else if (projSpreadResult === 'Lose' && mpSpreadResult === 'Win') {
+            pNotMPSpreadTotal++
+        }
 
+        if (projTotalResult === 'Win' && mpTotalResult === 'Lose') {
+            pNotMPTotalCount++
+            pNotMPTotalTotal++
+        } else if (projTotalResult === 'Lose' && mpTotalResult === 'Win') {
+            pNotMPTotalTotal++
+        }
+        
+        if (projSpreadL10Result === 'Win' && mpSpreadResult === 'Lose') {
+            l10NotMpSpreadCount++
+            l10NotMpSpreadTotal++
+        } else if (projSpreadL10Result === 'Lose' && mpSpreadResult === 'Win') {
+            l10NotMpSpreadTotal++
+        }
+
+        if (projTotalL10Result === 'Win' && mpTotalResult === 'Lose') {
+            l10NotMpTotalCount++
+            l10NotMpTotalTotal++
+        } else if (projTotalL10Result === 'Lose' && mpTotalResult === 'Win') {
+            l10NotMpTotalTotal++
+        }
     }
     
     return (
         <div className='resultCountCont'>
             <div>
-                <h3>Projected Spread Wins = {projSpreadCount}/{projSpreadTotal} ({(projSpreadCount/projSpreadTotal*100).toFixed()}%)</h3>
+                <h3>Projected Spread Wins (C) = {projSpreadCount}/{projSpreadTotal} ({(projSpreadCount/projSpreadTotal*100).toFixed()}%)</h3>
+                <h3>Projected Spread Wins (O) = {projSpreadOpenCount}/{projSpreadOpenTotal} ({(projSpreadOpenCount/projSpreadOpenTotal*100).toFixed()}%)</h3>
                 <h3>Projected L10 Spread Wins = {projL10SpreadCount}/{projL10SpreadTotal} ({(projL10SpreadCount/projL10SpreadTotal*100).toFixed()}%)</h3>
                 <h3>Midpoint Spread Wins = {mpSpreadCount}/{mpSpreadTotal} ({(mpSpreadCount/mpSpreadTotal*100).toFixed()}%)</h3>
-            </div>
-            <div>
-                <h3>Projected Total Wins = {projTotalCount}/{projTotalTotal} ({(projTotalCount/projTotalTotal*100).toFixed()}%)</h3>
-                <h3>Projected L10 Total Wins = {projL10TotalCount}/{projL10TotalTotal} ({(projL10TotalCount/projL10TotalTotal*100).toFixed()}%)</h3>
-                <h3>Midpoint Total Wins = {mpTotalCount}/{mpTotalTotal} ({(mpTotalCount/mpTotalTotal*100).toFixed()}%)</h3>
             </div>
             <div>
                 <h3>Proj + L10 Spread Wins = {psPsL10Count}/{psPsL10Total} ({(psPsL10Count/psPsL10Total*100).toFixed()}%)</h3>
                 <h3>Proj + MP Spread Wins = {psMpsCount}/{psMpsTotal} ({(psMpsCount/psMpsTotal*100).toFixed()}%)</h3>
                 <h3>L10 + MP Spread Wins = {mpL10SpreadCount}/{mpL10SpreadTotal} ({(mpL10SpreadCount/mpL10SpreadTotal*100).toFixed()}%)</h3>
                 <h3>Proj Not L10 Spread Wins = {pNotL10SpreadCount}/{pNotL10SpreadTotal} ({(pNotL10SpreadCount/pNotL10SpreadTotal*100).toFixed()}%)</h3>
+                <h3>Proj Not MP Spread Wins = {pNotMPSpreadCount}/{pNotMPSpreadTotal} ({(pNotMPSpreadCount/pNotMPSpreadTotal*100).toFixed()}%)</h3>
+                <h3>L10 Not MP Spread Wins = {l10NotMpSpreadCount}/{l10NotMpSpreadTotal} ({(mpL10SpreadCount/l10NotMpSpreadTotal*100).toFixed()}%)</h3>
+            </div>
+            <div>
+                <h3>Projected Total Wins (C) = {projTotalCount}/{projTotalTotal} ({(projTotalCount/projTotalTotal*100).toFixed()}%)</h3>
+                <h3>Projected Total Wins (O) = {projTotalOpenCount}/{projTotalOpenTotal} ({(projTotalOpenCount/projTotalOpenTotal*100).toFixed()}%)</h3>
+                <h3>Projected L10 Total Wins = {projL10TotalCount}/{projL10TotalTotal} ({(projL10TotalCount/projL10TotalTotal*100).toFixed()}%)</h3>
+                <h3>Midpoint Total Wins = {mpTotalCount}/{mpTotalTotal} ({(mpTotalCount/mpTotalTotal*100).toFixed()}%)</h3>
             </div>
             <div>
                 <h3>Proj + L10 Total Wins = {ptPtL10Count}/{ptPtL10Total} ({(ptPtL10Count/ptPtL10Total*100).toFixed()}%)</h3>
                 <h3>Proj + MP Total Wins = {ptMptCount}/{ptMptTotal} ({(ptMptCount/ptMptTotal*100).toFixed()}%)</h3>
                 <h3>L10 + MP Total Wins = {mpL10TotalCount}/{mpL10TotalTotal} ({(mpL10TotalCount/mpL10TotalTotal*100).toFixed()}%)</h3>
                 <h3>Proj Not L10 Total Wins = {pNotL10TotalCount}/{pNotL10TotalTotal} ({(pNotL10TotalCount/pNotL10TotalTotal*100).toFixed()}%)</h3>
+                <h3>Proj Not MP Total Wins = {pNotMPTotalCount}/{pNotMPTotalTotal} ({(pNotMPTotalCount/pNotMPTotalTotal*100).toFixed()}%)</h3>
+                <h3>L10 Not MP Total Wins = {l10NotMpTotalCount}/{l10NotMpTotalTotal} ({(mpL10TotalCount/mpL10TotalTotal*100).toFixed()}%)</h3>
             </div>
         </div>
     )

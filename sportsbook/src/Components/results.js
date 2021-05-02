@@ -38,6 +38,12 @@ const Results = () => {
                         <p>{Number(game.scoreAway) + Number(game.scoreHome)}</p>
                     </div>
                     <div className='fgMidpoint'>
+                        <h5>Opening Lines</h5>
+                        <p>{game.openingSpreadAway}</p>
+                        <p>{game.openingSpreadHome}</p>
+                        <p>{game.openingTotal}</p>
+                    </div>
+                    <div className='fgMidpoint'>
                         <h5>Actual Lines</h5>
                         <p>{game.spreadAway}</p>
                         <p>{game.spreadHome}</p>
